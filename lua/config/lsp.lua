@@ -29,13 +29,13 @@ local config = {
 
 vim.diagnostic.config(config)
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
-})
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+--   border = "rounded",
+-- })
+-- 
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+--   border = "rounded",
+-- })
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
@@ -138,9 +138,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client.name == "tsserver" then
       client.server_capabilities.document_formatting = false
     end
-    if client.name == 'texlab' then
-      buf_inverse()
-    end
+    -- if client.name == 'texlab' then
+    --   buf_inverse()
+    -- end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
   end,

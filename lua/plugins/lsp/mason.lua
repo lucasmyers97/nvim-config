@@ -3,6 +3,17 @@ return {
     opts = {
         ensure_installed = {
             'lua_ls',
+            'texlab',
+            'clangd',
+            'cmake',
+            'rust_analyzer',
+            'cssls',
+            'html',
+            'ts_ls',
+            'pyright',
+            'bashls',
+            'jsonls',
+            'yamlls',
         }
     },
     dependencies = {
