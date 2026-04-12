@@ -9,8 +9,9 @@ Ideally this will give me more control over my configuration, and knowledge of h
 - [ ] Check all old LSP setup files
 - [ ] Install popup.nvim
 - [ ] Install org roam (at some point)
-- [ ] Install completion plugins (there're a lot of them)
+- [X] Install completion plugins (there're a lot of them)
 - [ ] Install snippets
+  - [ ] Add [friendly snippets](https://github.com/rafamadriz/friendly-snippets)
 - [ ] Install LSP colors
 - [ ] Install rust tools
 - [ ] Install symbols outline
