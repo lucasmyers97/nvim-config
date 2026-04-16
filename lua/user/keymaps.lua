@@ -51,7 +51,7 @@ keymap("n", "<C-c>", "<Cmd>BufferClose<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter normal mode
-keymap("i", "jk", "<ESC>", opts)
+-- keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -69,6 +69,9 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
+vim.keymap.set("n", "<leader>;", "gcc", { remap = true, desc = "Toggle comment line" })
+vim.keymap.set("v", "<leader>;", "gc", { remap = true, desc = "Toggle comment section" })
 
 -- Terminal --
 keymap("n", "<leader>t", ":ToggleTerm<CR>", opts)
