@@ -91,6 +91,7 @@ keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').find_files({hid
 keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr> ", opts)
 keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 keymap("n", "<leader>fH", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
+keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 
 -- DAP commands
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
