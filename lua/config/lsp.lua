@@ -145,3 +145,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     lsp_highlight_document(client)
   end,
 })
+
+
+vim.lsp.enable("julials")
