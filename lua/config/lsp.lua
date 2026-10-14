@@ -77,58 +77,6 @@ local function lsp_keymaps(bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
-local texlab_parse_dbus_monitor_output = function(_, data)
-    --[[
-    The actual output from dbus-monitor looks something like:
-    ```
-    signal time=1691002304.407054 sender=:1.6295 -> destination=(null destination) serial=784 path=/org/gnome/evince/Window/0; interface=org.gnome.evince.Window; member=SyncSource
-       string "file:///home/lucas/Documents/research/anisotropic-nematic-structure/anisotropic_nematic_structure.tex"
-       struct {
-          int32 43
-          int32 -1
-       }
-       uint32 620774289
-    ```
-    so we just grab the 2nd and 4th lines to process
-    --]]
-
-    local data_str = ''
-    for _, s in ipairs(data) do
-        data_str = data_str .. s .. '\n'
-    end
-
-    local filename_pattern = 'string "file://(.*%.tex)"'
-    local _, _, filename = string.find(data_str, filename_pattern)
-
-    if filename ~= vim.api.nvim_buf_get_name(0) then
-        return
-    end
-
-    local line_number_pattern = 'int32 (%d+)'
-    local line_number
-    _, _, line_number = string.find(data_str, line_number_pattern)
-
-    if not line_number then
-        return
-    end
-
-    local code_row = tonumber(line_number)
-    vim.api.nvim_win_set_cursor(0, {code_row, 0})
-end
-
-local on_stderr = function(_, data)
-    for _, s in pairs(data) do
-        print(s)
-    end
-end
-
-local function buf_inverse()
-    vim.fn.jobstart({'dbus-monitor',
-                     'type=signal,interface=org.gnome.evince.Window,member=SyncSource'},
-                     { on_stdout = texlab_parse_dbus_monitor_output,
-                       on_stderr = on_stderr })
-end
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(ev)
