@@ -86,9 +86,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client.name == "tsserver" then
       client.server_capabilities.document_formatting = false
     end
-    -- if client.name == 'texlab' then
-    --   buf_inverse()
-    -- end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
   end,
